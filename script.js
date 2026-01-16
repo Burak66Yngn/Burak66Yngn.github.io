@@ -16,38 +16,38 @@ class TennisBall {
         ctx.save();
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
-        
+
         // Tennis ball body
         const gradient = ctx.createRadialGradient(-5, -5, 5, 0, 0, this.radius);
         gradient.addColorStop(0, '#d4ff00');
         gradient.addColorStop(0.7, '#a8cc00');
         gradient.addColorStop(1, '#6a8000');
-        
+
         ctx.fillStyle = gradient;
         ctx.beginPath();
         ctx.arc(0, 0, this.radius, 0, Math.PI * 2);
         ctx.fill();
-        
+
         // Tennis ball curves
         ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
         ctx.lineWidth = 2;
-        
+
         // Left curve
         ctx.beginPath();
         ctx.arc(-this.radius * 0.3, 0, this.radius * 0.8, -Math.PI * 0.4, Math.PI * 0.4);
         ctx.stroke();
-        
+
         // Right curve
         ctx.beginPath();
         ctx.arc(this.radius * 0.3, 0, this.radius * 0.8, Math.PI * 0.6, Math.PI * 1.4);
         ctx.stroke();
-        
+
         // Shadow effect
         ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
         ctx.beginPath();
         ctx.ellipse(0, this.radius * 0.6, this.radius * 0.8, this.radius * 0.3, 0, 0, Math.PI * 2);
         ctx.fill();
-        
+
         ctx.restore();
     }
 
@@ -55,12 +55,12 @@ class TennisBall {
         this.velocity += this.gravity;
         this.y += this.velocity;
         this.rotation += this.rotationSpeed;
-        
+
         // Bounce on bottom
         if (this.y + this.radius > this.canvas.height) {
             this.y = this.canvas.height - this.radius;
             this.velocity *= -this.bounce;
-            
+
             // Stop bouncing if velocity is too low
             if (Math.abs(this.velocity) < 0.5) {
                 this.velocity = 0;
@@ -77,10 +77,10 @@ class TennisAnimation {
         this.ctx = this.canvas.getContext('2d');
         this.balls = [];
         this.animationComplete = false;
-        
+
         this.resizeCanvas();
         window.addEventListener('resize', () => this.resizeCanvas());
-        
+
         this.init();
     }
 
@@ -92,7 +92,7 @@ class TennisAnimation {
     init() {
         // Create tennis balls at random positions
         const ballCount = Math.floor(Math.random() * 5) + 8; // 8-12 balls
-        
+
         for (let i = 0; i < ballCount; i++) {
             setTimeout(() => {
                 const x = Math.random() * (this.canvas.width - 80) + 40;
@@ -100,32 +100,32 @@ class TennisAnimation {
                 this.balls.push(new TennisBall(this.canvas, x, y));
             }, i * 150); // Stagger ball creation
         }
-        
+
         this.animate();
-        
+
         // End animation after 5 seconds
         setTimeout(() => {
             this.endAnimation();
-        }, 5000);
+        }, 4500); // Reduced by 10%
     }
 
     animate() {
         if (this.animationComplete) return;
-        
+
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        
+
         this.balls.forEach(ball => {
             ball.update();
             ball.draw(this.ctx);
         });
-        
+
         requestAnimationFrame(() => this.animate());
     }
 
     endAnimation() {
         this.animationComplete = true;
         this.overlay.classList.add('hidden');
-        
+
         // Remove overlay from DOM after transition
         setTimeout(() => {
             this.overlay.style.display = 'none';
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(section);
     });
-    
+
     // Animate skill bars when visible
     const skillBars = document.querySelectorAll('.skill-progress');
     const skillObserver = new IntersectionObserver((entries) => {
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, { threshold: 0.5 });
-    
+
     skillBars.forEach(bar => skillObserver.observe(bar));
 });
 
@@ -202,7 +202,7 @@ const navbar = document.querySelector('.navbar');
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
+
     if (currentScroll > 100) {
         navbar.style.background = 'rgba(10, 10, 15, 0.95)';
         navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.3)';
@@ -210,7 +210,7 @@ window.addEventListener('scroll', () => {
         navbar.style.background = 'rgba(10, 10, 15, 0.8)';
         navbar.style.boxShadow = 'none';
     }
-    
+
     lastScroll = currentScroll;
 });
 
