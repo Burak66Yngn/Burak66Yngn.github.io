@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burak Yangın - CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .cv-container {
+            max-width: 210mm;
+            min-height: 297mm;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: white;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: #667eea;
+        }
+
+        .name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .title {
+            font-size: 14px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .sidebar-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 5px;
+        }
+
+        .contact-item {
+            margin-bottom: 12px;
+            font-size: 13px;
+            display: flex;
+            align-items: start;
+            gap: 10px;
+        }
+
+        .contact-item .icon {
+            font-size: 16px;
+            margin-top: 2px;
+        }
+
+        .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: white;
+            border-radius: 3px;
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px 50px;
+        }
+
+        .header {
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .header .tagline {
+            font-size: 18px;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #667eea;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .timeline-item {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 3px solid #667eea;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -7.5px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+
+        .timeline-item h4 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .timeline-item .organization {
+            font-size: 14px;
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .timeline-item .date {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .highlight-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .highlight-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .highlight-box li {
+            font-size: 13px;
+            margin-bottom: 6px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .highlight-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .cv-container {
+                box-shadow: none;
+                margin: 0;
+                max-width: 100%;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cv-container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <div class="profile-section">
+                <div class="profile-photo">
+                    🎾
+                </div>
+                <div class="name">Burak Yangın</div>
+                <div class="title">Professional Tennis Player<br>Computer Engineering Student</div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Contact</h3>
+                <div class="contact-item">
+                    <span class="icon">📧</span>
+                    <span>yanginburak66@mail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📱</span>
+                    <span>+90 533 709 56 91</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📍</span>
+                    <span>Antalya, Turkey</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">🌐</span>
+                    <span>burak66yngn.github.io</span>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Languages</h3>
+                <div class="language-item">
+                    <span>Turkish</span>
+                    <span>Native</span>
+                </div>
+                <div class="language-item">
+                    <span>English</span>
+                    <span>Advanced (B2)</span>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Technical Skills</h3>
+                <div class="skill-item">
+                    <div class="skill-name">Java</div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Python</div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">HTML/CSS</div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">JavaScript</div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">C</div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Interests</h3>
+                <div class="tags">
+                    <div class="tag" style="background: white; color: #667eea;">🎾 Tennis</div>
+                    <div class="tag" style="background: white; color: #667eea;">💻 Coding</div>
+                    <div class="tag" style="background: white; color: #667eea;">🌍 Travel</div>
+                    <div class="tag" style="background: white; color: #667eea;">📚 Learning</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>Burak Yangın</h1>
+                <p class="tagline">Engineering Innovation Through Athlete Discipline</p>
+            </div>
+
+            <div class="section">
+                <div class="highlight-box">
+                    <h3>🎯 Career Objective</h3>
+                    <p style="font-size: 13px; color: #666;">Seeking an internship where I can contribute to team
+                        success while pushing the boundaries of my technical skills. Combining athletic discipline with
+                        engineering innovation to deliver exceptional results.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">🏕️ International Experience</div>
+                <div class="timeline-item">
+                    <h4>Erasmus+ Project Participant</h4>
+                    <div class="organization">International Cooperation Program</div>
+                    <div class="date">2025 - Present</div>
+                    <p>Participating in "Quality in E+" training program in Slovenia. Focused on developing quality
+                        learning mobilities with emphasis on sustainability and social inclusion.</p>
+                    <div class="tags">
+                        <span class="tag">Erasmus+</span>
+                        <span class="tag">International Collaboration</span>
+                        <span class="tag">Cross-Cultural Communication</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">🎓 Education</div>
+                <div class="timeline-item">
+                    <h4>Computer Engineering (Scholarship Student)</h4>
+                    <div class="organization">Antalya Bilim University</div>
+                    <div class="date">2024 - 2028 (2nd Year - GPA: Ongoing)</div>
+                    <p>Faculty of Engineering and Natural Sciences. Coursework includes Data Structures, Algorithms,
+                        Object-Oriented Programming, and Web Technologies.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>High School</h4>
+                    <div class="organization">Merbe Aydın Natural Science High School</div>
+                    <div class="date">2019 - 2023</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">🎾 Athletic Career</div>
+                <div class="timeline-item">
+                    <h4>Professional Tennis Player</h4>
+                    <div class="organization">Competitive Tennis</div>
+                    <div class="date">2018 - Present</div>
+                    <p>Competing in professional tournaments while pursuing academic career. Developed discipline,
+                        resilience, and international communication skills through years of competitive play.</p>
+                    <div class="tags">
+                        <span class="tag">Professional Athlete</span>
+                        <span class="tag">Team Leadership</span>
+                        <span class="tag">International Competitor</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">💡 What I Bring</div>
+                <div class="highlight-box">
+                    <ul>
+                        <li><strong>Resilience:</strong> I don't fold when a project gets tough; I adjust my strategy
+                        </li>
+                        <li><strong>Communication:</strong> Years of international tournaments have made me a global
+                            citizen</li>
+                        <li><strong>Growth Mindset:</strong> Constantly 'training' to be better than yesterday</li>
+                        <li><strong>Time Management:</strong> Balancing 100% dedication to both athletics and academics
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">💻 Projects</div>
+                <div class="timeline-item">
+                    <h4>Personal Portfolio Website</h4>
+                    <div class="date">2024</div>
+                    <p>Built a modern, responsive portfolio website featuring tennis ball animation, showcasing
+                        technical skills and athletic background.</p>
+                    <div class="tags">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Canvas API</span>
+                        <span class="tag">Responsive Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
