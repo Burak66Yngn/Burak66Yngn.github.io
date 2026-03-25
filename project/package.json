@@ -1,0 +1,11 @@
+{
+  "name": "carbon-transparency-scripts",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "ingest:eea": "node scripts/eea-ingest.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1"
+  }
+}
